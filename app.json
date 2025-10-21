@@ -1,0 +1,97 @@
+{
+  "expo": {
+<<<<<<< HEAD
+    "name": "my-app",
+    "slug": "my-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "myapp",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.culturalai.myapp"
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#ffffff"
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+=======
+    "name": "CulturalAI",
+    "slug": "CulturalAI",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.vedantmodhave.culturalai"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.vedantmodhave.culturalai",
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
+    },
+    "experiments": {
+      "tsconfigPaths": true
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to analyze cultural artifacts."
+        }
+      ],
+      "expo-router"
+    ],
+>>>>>>> 3007bbec377deb945723d3925bc6ac882042ed87
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+<<<<<<< HEAD
+        "projectId": "91faa42f-ea2f-4364-8577-3cc0dec05424"
+=======
+        "projectId": "a17a8337-331f-4a0c-ad7b-e38cd2a5d64a"
+>>>>>>> 3007bbec377deb945723d3925bc6ac882042ed87
+      }
+    }
+  }
+}
