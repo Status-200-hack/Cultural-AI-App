@@ -13,8 +13,7 @@ import * as ImagePicker from "expo-image-picker";
 import * as Speech from "expo-speech";
 import * as GoogleGenerativeAI from "@google/generative-ai";
 import { MaterialIcons } from "@expo/vector-icons";
-
-const API_KEY = "AIzaSyBNiU6meGclnmMdC23YYs9rCccTXicz-tw";
+import ENV from '../.././.env';
 
 type LanguageCode = "en" | "hi" | "mr";
 
@@ -190,7 +189,7 @@ const AnalyzeManuscript: React.FC = () => {
     setError(null);
 
     try {
-      const genAI = new GoogleGenerativeAI.GoogleGenerativeAI(API_KEY);
+      const genAI = new GoogleGenerativeAI.GoogleGenerativeAI(ENV.GOOGLE_GEMINI_API_KEY);
       const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
       const response = await fetch(image);
@@ -1259,15 +1258,19 @@ export default AnalyzeManuscript;
 //       const base64Data = await convertBlobToBase64(blob);
 
 //       const prompt = 
-// `Analyze this ancient manuscript/image comprehensively and provide detailed information in this exact format:
-// ${languageConfig[language].scriptType}: [Identify script type (e.g., Brahmi, Hieroglyphic, Cuneiform)]
-// ${languageConfig[language].language}: [Detected language(s) with confidence percentage]
-// ${languageConfig[language].content}: [Summary of content/meaning]
-// ${languageConfig[language].historicalPeriod}: [Estimated time period with dating rationale]
-// ${languageConfig[language].material}: [Writing surface material and ink/pigment analysis]
+// `Analyze this ancient manuscript and provide in ${language}:
+// ${languageConfig[language].scriptType}: [Script Identification]
+// ${languageConfig[language].language}: [Language Detection]
+// ${languageConfig[language].content}: [Content Summary]
+// ${languageConfig[language].translation}: [Key Translation]
+// ${languageConfig[language].historicalPeriod}: [Historical Context]
 
-// Provide response in ${language} language. Include specific technical details about the script, linguistic analysis, and historical context. 
-// Maintain strict format without markdown. Use complete sentences for descriptions.`;
+// Format strictly as:
+// ${languageConfig[language].scriptType}: ...
+// ${languageConfig[language].language}: ...
+// ${languageConfig[language].content}: ...
+// ${languageConfig[language].translation}: ...
+// ${languageConfig[language].historicalPeriod}: ...`;
 
 //       const result = await model.generateContent([
 //         { text: prompt },
@@ -1286,11 +1289,21 @@ export default AnalyzeManuscript;
 //   };
 
 //   const parseResponse = (text: string, config: LanguageConfig): ResultItem[] => {
-//     const lines = text.split('\n').filter(line => line.trim() !== '');
-//     return lines.map(line => {
-//       const [label, ...valueParts] = line.split(':').map(part => part.trim());
-//       const value = valueParts.join(':').replace(/[*_]/g, '');
-//       return { label, value };
+//     const expectedLabels = [
+//       config.scriptType,
+//       config.language,
+//       config.content,
+//       config.translation,
+//       config.historicalPeriod
+//     ];
+
+//     return expectedLabels.map(label => {
+//       const regex = new RegExp(`${label}:\\s*(.*)`);
+//       const match = text.match(regex);
+//       return {
+//         label,
+//         value: match ? match[1].trim() : "Information not available"
+//       };
 //     });
 //   };
 

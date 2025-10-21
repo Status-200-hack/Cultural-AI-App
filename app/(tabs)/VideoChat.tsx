@@ -3,9 +3,10 @@ import { View, Text, TextInput, TouchableOpacity, FlatList, StyleSheet, Activity
 import { Audio } from 'expo-av';
 import EventSource from 'react-native-sse';
 import * as FileSystem from 'expo-file-system';
+import { CONVAI_API_KEY, CONVAI_CHARACTER_ID } from '@env';
 
-const API_KEY = 'f79c3bc27b9c80790f0e3d97eae4b481';
-const CHARACTER_ID = '6b391e64-06f9-11f0-9bdd-42010a7be01a';
+const API_KEY = CONVAI_API_KEY;
+const CHARACTER_ID = CONVAI_CHARACTER_ID;
 const API_URL = 'https://api.convai.com/character/getResponse';
 const SUGGESTIONS_URL = 'https://api.convai.com/character/generate-starter-conversation';
 
